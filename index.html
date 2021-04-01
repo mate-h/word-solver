@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Solver</title>
+    <script type="module" src="index.js"></script>
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+        padding: 10rem;
+      }
+      .container {
+        position: relative;
+      }
+      #results { 
+        opacity: 0;
+        transition: opacity 75ms linear;
+      }
+      .loading {
+        opacity: 0;
+        transition: opacity 75ms linear;
+        position: absolute;
+        top: 12rem;
+      }
+      .active {
+        background-color: white;
+        transition: background-color 75ms linear;
+        cursor: pointer;
+      }
+      .active:hover {
+        background-color: rgba(0,0,0,0.06);
+      }
+      .active:active {
+        background-color: rgba(0,0,0,0.12);
+      }
+      .caption {
+        font-size: 0.25rem;
+        color: rgba(0,0,0,0.54);
+      }
+      .selected { 
+        background-color: rgba(0, 122, 255, 0.24);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Word Solver</h2>
+    <div>Rules</div>
+    <ul>
+      <li>Only words over 2 characters</li>
+      <li>No acronyms or names</li>
+    </ul>
+    <form id="solveForm">
+      <input type="text" id="lettersInput" placeholder="Letters">
+      <button type="submit" id="solveButton">Solve</button>
+    </form>
+    <div class="container">
+      <h2>Permutations</h2>
+      <div id="permutations"></div>
+      <div id="expandContainer"></div>
+      <div id="wordContainer"></div>
+      <h2>Results</h2>
+      <svg class="loading" id="progressIndicatorResults" width="20" height="21" xmlns="http://www.w3.org/2000/svg"><style>@keyframes e0o{0%{opacity:.6}to{opacity:0}}</style><g fill="currentColor"><path d="M6.366 1.706a1 1 0 10-1.732 1l1.5 2.598a1 1 0 001.732-1l-1.5-2.598z" style="animation:e0o 1000ms linear 916ms infinite normal forwards" opacity="0"/><path d="M1.706 6.366l2.598 1.5a1 1 0 101-1.732l-2.598-1.5a1 1 0 10-1 1.732z" style="animation:e0o 1000ms linear 833ms infinite normal forwards" opacity="0"/><path d="M5 10a1 1 0 00-1-1H1a1 1 0 000 2h3a1 1 0 001-1z" style="animation:e0o 1000ms linear 750ms infinite normal forwards" opacity="0"/><path d="M5.67 12.5a1 1 0 00-1.366-.366l-2.598 1.5a1 1 0 101 1.732l2.598-1.5A1 1 0 005.67 12.5z" style="animation:e0o 1000ms linear 666ms infinite normal forwards" opacity="0"/><path d="M7.5 14.33a1 1 0 00-1.366.366l-1.5 2.598a1 1 0 101.732 1l1.5-2.598A1 1 0 007.5 14.33z" style="animation:e0o 1000ms linear 583ms infinite normal forwards" opacity="0"/><path d="M10 15a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1z" style="animation:e0o 1000ms linear 500ms infinite normal forwards" opacity="0"/><path d="M13.866 14.696a1 1 0 00-1.732 1l1.5 2.598a1 1 0 101.732-1l-1.5-2.598z" style="animation:e0o 1000ms linear 416ms infinite normal forwards" opacity="0"/><path d="M18.294 13.634l-2.598-1.5a1 1 0 10-1 1.732l2.598 1.5a1 1 0 101-1.732z" style="animation:e0o 1000ms linear 333ms infinite normal forwards" opacity="0"/><path d="M19 9h-3a1 1 0 000 2h3a1 1 0 000-2z" style="animation:e0o 1000ms linear 250ms infinite normal forwards" opacity="0"/><path d="M14.33 7.5a1 1 0 001.366.366l2.598-1.5a1 1 0 10-1-1.732l-2.598 1.5A1 1 0 0014.33 7.5z" style="animation:e0o 1000ms linear 166ms infinite normal forwards" opacity="0"/><path d="M12.5 5.67a1 1 0 001.366-.366l1.5-2.598a1 1 0 10-1.732-1l-1.5 2.598A1 1 0 0012.5 5.67z" style="animation:e0o 1000ms linear 83ms infinite normal forwards" opacity="0"/><path d="M10 0a1 1 0 00-1 1v3a1 1 0 002 0V1a1 1 0 00-1-1z" style="animation:e0o 1000ms linear infinite normal forwards" opacity="0"/></g></svg>
+      <div id="results"></div>
+    </div>
+  </body>
+</html>
