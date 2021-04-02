@@ -60,6 +60,12 @@ export default function render(props) {
   `;
 }
 
+/**
+ * The expand component will expand its children once clicked on.
+ * 
+ * @param {string} id The id of the element to render the component to.
+ * @param {{ open: boolean, children: string, header?: string }} props The props for the Expand component.
+ */
 export function Expand(id, props) {
   const el = document.getElementById(id)
   el.innerHTML = render(props)
